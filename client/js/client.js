@@ -10,3 +10,11 @@ function onMessage(text) {
 
     list.appendChild(el);
 }
+
+const chatForm = document.getElementById('chat-form');
+chatForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const input = chatForm.querySelector('#chat-input');
+    sock.emit('msg', input.value);
+    chatForm.reset();
+});
